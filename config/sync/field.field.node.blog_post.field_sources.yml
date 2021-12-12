@@ -1,0 +1,23 @@
+uuid: 86f327cf-9550-4e9b-9640-b019710ed1ba
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sources
+    - node.type.blog_post
+  module:
+    - link
+id: node.blog_post.field_sources
+field_name: field_sources
+entity_type: node
+bundle: blog_post
+label: Sources
+description: 'renseignement pour l''utilisation du lien '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

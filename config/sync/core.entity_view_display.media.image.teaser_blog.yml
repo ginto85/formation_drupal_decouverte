@@ -1,0 +1,33 @@
+uuid: f24c43bc-ca92-4879-9d83-2f76333da78d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.teaser_blog
+    - field.field.media.image.field_media_image
+    - image.style.medium
+    - media.type.image
+  module:
+    - image
+_core:
+  default_config_hash: B1a2aBHmUulUZN6HrxITEH1tSResuVjXMBEv1lUBtOo
+id: media.image.teaser_blog
+targetEntityType: media
+bundle: image
+mode: teaser_blog
+content:
+  field_media_image:
+    label: visually_hidden
+    settings:
+      image_style: medium
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    weight: 1
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

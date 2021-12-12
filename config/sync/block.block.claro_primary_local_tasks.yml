@@ -1,0 +1,22 @@
+uuid: 7f24cbb5-e82c-4a52-b47e-5e0fda9a9c18
+langcode: fr
+status: true
+dependencies:
+  theme:
+    - admin_custom
+_core:
+  default_config_hash: 6BR0VLUHavefZbodPNUDZ3URgD0KJiRHwxbp1BP2Jmg
+id: claro_primary_local_tasks
+theme: admin_custom
+region: header
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: false
+visibility: {  }

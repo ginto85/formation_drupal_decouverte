@@ -1,0 +1,127 @@
+uuid: 691c9c08-2d16-4979-8a18-8f61351d8262
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.home.field_introduction
+    - field.field.node.home.field_main_image
+    - field.field.node.home.field_related_articles
+    - node.type.home
+  module:
+    - field_group
+    - media_library
+third_party_settings:
+  field_group:
+    group_titre_et_sujet:
+      children:
+        - field_related_articles
+      parent_name: group_onglets
+      weight: 6
+      format_type: tab
+      region: content
+      format_settings:
+        description: ''
+        formatter: closed
+        required_fields: true
+        id: ''
+        classes: ''
+        show_empty_fields: false
+      label: 'mises en avant'
+    group_onglets:
+      children:
+        - group_image_principale
+        - group_titre_et_sujet
+      parent_name: ''
+      weight: 1
+      format_type: tabs
+      region: content
+      format_settings:
+        show_empty_fields: false
+        id: ''
+        classes: ''
+        direction: vertical
+        width_breakpoint: 640
+      label: Onglets
+    group_intro:
+      children: {  }
+      parent_name: group_image_principale
+      weight: 2
+      format_type: tab
+      region: hidden
+      format_settings:
+        show_empty_fields: false
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: Introduction
+    group_image_principale:
+      children:
+        - field_main_image
+        - field_introduction
+        - group_intro
+      parent_name: group_onglets
+      weight: 5
+      format_type: tab
+      region: content
+      format_settings:
+        description: ''
+        formatter: closed
+        required_fields: true
+        id: ''
+        classes: ''
+        show_empty_fields: false
+      label: 'image et intro'
+id: node.home.default
+targetEntityType: node
+bundle: home
+mode: default
+content:
+  field_introduction:
+    weight: 7
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_main_image:
+    weight: 6
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    type: media_library_widget
+    region: content
+  field_related_articles:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  status:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  langcode: true
+  path: true
+  promote: true
+  sticky: true
+  uid: true

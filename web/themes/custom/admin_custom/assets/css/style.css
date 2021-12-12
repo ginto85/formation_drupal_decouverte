@@ -1,0 +1,15 @@
+/* Fix node form width */
+.layout-region--node-main,
+.layout-region--node-footer,
+.layout-region--node-secondary,
+.layout-region--node-main .layout-region__content,
+.layout-region--node-footer .layout-region__content,
+.layout-region--node-secondary .layout-region__content {
+  float: none;
+  width: 100%;
+  max-width: 100%;
+}
+
+.paragraphs-browser-wrapper fieldset {
+  margin-bottom: 4rem;
+}

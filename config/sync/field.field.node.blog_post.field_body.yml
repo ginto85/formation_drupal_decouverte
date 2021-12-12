@@ -1,0 +1,21 @@
+uuid: daf90418-051b-45cb-9186-3a5fe9bd2825
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_body
+    - node.type.blog_post
+  module:
+    - text
+id: node.blog_post.field_body
+field_name: field_body
+entity_type: node
+bundle: blog_post
+label: Body
+description: 'Corps de texte de blog'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

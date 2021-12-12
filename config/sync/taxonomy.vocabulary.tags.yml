@@ -1,0 +1,10 @@
+uuid: 8ea903b5-379a-41c8-94ea-e25831c32fd8
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: yoNVreoTdTZTY7GuE8fI9Jmxqdz8vlo4ZJKixMNSosw
+name: Tags
+vid: tags
+description: 'Utilisez les tags pour regrouper les articles sur des sujets similaires dans des catégories.'
+weight: 0

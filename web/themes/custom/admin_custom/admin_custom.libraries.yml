@@ -1,0 +1,6 @@
+main:
+  version: 1.x
+  css:
+    theme:
+      assets/css/style.css: {}
+      

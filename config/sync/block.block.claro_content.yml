@@ -1,0 +1,22 @@
+uuid: 03110c61-86fa-475f-aebe-fbc7e14025b7
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - admin_custom
+_core:
+  default_config_hash: HLGcBJh8KoFafxyZ98WXxMyRNjARyY3q0DqV6ORGoE0
+id: claro_content
+theme: admin_custom
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

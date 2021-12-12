@@ -1,0 +1,18 @@
+uuid: 36ba302a-52a1-49ba-a5dc-9fc19a49aa2a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.home
+id: node.home.title
+field_name: title
+entity_type: node
+bundle: home
+label: 'Titre (''administratif'')'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

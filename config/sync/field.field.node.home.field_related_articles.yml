@@ -1,0 +1,29 @@
+uuid: 4e50a1c8-3d4e-4f6d-9967-e3392dbd076a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related_articles
+    - node.type.blog_post
+    - node.type.home
+id: node.home.field_related_articles
+field_name: field_related_articles
+entity_type: node
+bundle: home
+label: 'Billets du blog mis en avant'
+description: 'choisir jusqu''à 3 billets de blog à mettre en avant'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      blog_post: blog_post
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

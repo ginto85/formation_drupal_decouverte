@@ -1,0 +1,29 @@
+uuid: 6ad7691e-a788-425d-bb55-46cba38e4cd7
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_main_image
+    - media.type.image
+    - node.type.home
+id: node.home.field_main_image
+field_name: field_main_image
+entity_type: node
+bundle: home
+label: 'image principale'
+description: 'image afficher en haut de la page d''accueil'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

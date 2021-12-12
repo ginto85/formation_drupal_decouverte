@@ -1,0 +1,10 @@
+uuid: d617d340-0ac0-4b25-83eb-ced1221422e3
+langcode: fr
+status: true
+dependencies:
+  module:
+    - media
+id: media.image_full
+label: 'Image full'
+targetEntityType: media
+cache: true

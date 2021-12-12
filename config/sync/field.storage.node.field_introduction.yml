@@ -1,0 +1,19 @@
+uuid: 9889a3f2-4324-42e5-addf-bb56446f3516
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_introduction
+field_name: field_introduction
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
