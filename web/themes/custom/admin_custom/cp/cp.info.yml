@@ -1,0 +1,14 @@
+name: Coding Pool thème
+type: theme
+description: 'un theme de test pour faire des exercices.'
+core_version_requirement: ^8 || ^9
+libraries:
+  - cp/main
+base theme: stable9
+ckeditor_stylesheets:
+  - css/ckeditor.css
+regions:
+  header: 'Header'
+  breadcrumb: 'Breadcrumb'
+  content: 'Content'
+  footer: 'Footer'

@@ -812,3 +812,8 @@ $databases['default']['default'] = [
     'driver' => 'mysql',
 ];
 $settings['config_sync_directory'] = '../config/sync';
+
+$settings['trusted_host_patterns'] = ['.*'];
+$config['system.logging']['error_level'] = 'verbose'; //hide, some, all, verbose
+error_reporting(E_ALL);
+ini_set('display_errors', true);
