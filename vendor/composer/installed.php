@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'dec50b44f186499bc689c1fc998dcafba0f40043',
+        'reference' => 'fc2b870c0b16c3a35588b42e12c90b8dcb8cb04c',
         'name' => 'drupal/recommended-project',
         'dev' => true,
     ),
@@ -616,6 +616,15 @@
                 0 => '9.2.10',
             ),
         ),
+        'drupal/facets' => array(
+            'pretty_version' => '2.0.0',
+            'version' => '2.0.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/facets',
+            'aliases' => array(),
+            'reference' => '2.0.0',
+            'dev_requirement' => false,
+        ),
         'drupal/field' => array(
             'dev_requirement' => false,
             'replaced' => array(
@@ -895,7 +904,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'dec50b44f186499bc689c1fc998dcafba0f40043',
+            'reference' => 'fc2b870c0b16c3a35588b42e12c90b8dcb8cb04c',
             'dev_requirement' => false,
         ),
         'drupal/redirect' => array(
@@ -919,11 +928,29 @@
                 0 => '9.2.10',
             ),
         ),
+        'drupal/scheduler' => array(
+            'pretty_version' => '1.4.0',
+            'version' => '1.4.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/scheduler',
+            'aliases' => array(),
+            'reference' => '8.x-1.4',
+            'dev_requirement' => false,
+        ),
         'drupal/search' => array(
             'dev_requirement' => false,
             'replaced' => array(
                 0 => '9.2.10',
             ),
+        ),
+        'drupal/search_api' => array(
+            'pretty_version' => '1.21.0',
+            'version' => '1.21.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/search_api',
+            'aliases' => array(),
+            'reference' => '8.x-1.21',
+            'dev_requirement' => false,
         ),
         'drupal/serialization' => array(
             'dev_requirement' => false,
