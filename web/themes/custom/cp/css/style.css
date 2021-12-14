@@ -1,15 +1,18 @@
-.MainMenu {
+.MainMenu, ul,
+.MainMenu li {
      list-style-type: none;
-     display:flex;
-   
+     background-color: rgb(47, 197, 47);
 }
-ul li {
+
+.MainMenu li {
     border: solid 1px grey ;
-    padding:1rem;
+    padding:3px;
+    border-radius: 3px ;
 }
-ul li a {
+.MainMenu li a {
     text-decoration: none;
 }
+
 article{
     background-color: rgb(156, 133, 137);
 }
