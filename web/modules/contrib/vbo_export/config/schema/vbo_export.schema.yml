@@ -1,0 +1,26 @@
+views_bulk_operations.action_config.vbo_export_generate_csv_action:
+  type: views_bulk_operations_action_config
+  label: 'Export to csv'
+  mapping:
+    strip_tags:
+      type: boolean
+      label: 'Should HTML be stripped?'
+    field_override:
+      type: boolean
+    field_config:
+      type: ignore
+    separator:
+      type: string
+      label: 'CSV separator'
+
+views_bulk_operations.action_config.vbo_export_generate_xlsx_action:
+  type: views_bulk_operations_action_config
+  label: 'Export to xlsx'
+  mapping:
+    field_override:
+      type: boolean
+    field_config:
+      type: ignore
+    separator:
+      type: string
+      label: 'CSV separator'

@@ -10,5 +10,6 @@ ckeditor_stylesheets:
 regions:
   header: 'Header'
   breadcrumb: 'Breadcrumb'
+  facet: 'Facet'
   content: 'Content'
   footer: 'Footer'

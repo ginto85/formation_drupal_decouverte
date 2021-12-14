@@ -13,7 +13,8 @@
  */
 #}
 {% if content %}
-  <div{{ attributes }}>
+  <div{{ attributes.addClass(region) }}>
+
     {{ content }}
   </div>
 {% endif %}
