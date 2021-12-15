@@ -1,0 +1,14 @@
+<?php 
+
+function cp_blog_post_preprocess_node(&$variables){
+
+    /** @var \Drupal\node\NodeInterface $node */
+    $node = $variables['node'];
+    // var_dump($node->bundle());
+
+    if($node->bundle() == 'blog_post' && $variables['view_mode'] =='full' ){
+    $variables['content']['my_html']= [
+        '#markup' => "<p>Toto</p>"
+    ];
+    }
+}

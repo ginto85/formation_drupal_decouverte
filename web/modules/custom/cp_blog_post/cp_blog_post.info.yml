@@ -1,0 +1,4 @@
+name: Coding Pool - Gestion des billets de blog
+description: Module qui gère l'affichage du blog 
+type: module
+core_version_requirement: ^9
