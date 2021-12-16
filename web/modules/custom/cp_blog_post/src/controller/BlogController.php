@@ -14,7 +14,7 @@ class BlogController extends ControllerBase
     {
         $limit = 5;
         $build = [
-            '#markup' => '<p>' . $this->t('Pas de résultat') . '</p>',
+            '#markup' => '<p>' . $this->t('Pas de résultat') . '</p>', // $this->t() permet de traduire le contenu !important
         ];
         $entityTypeManager = Drupal::entityTypeManager();
         $nodeStorage = $entityTypeManager->getStorage('node');
@@ -36,15 +36,18 @@ class BlogController extends ControllerBase
             }
             $build = [
                 'wrapper' => [
-                    '#type' => 'container',
+                    // tableau de renu
+                    '#type' => 'container', // ajoute une <div> avec l'attribut 'class= BlogList-wrapper
                     '#attributes' => [
                         'class' => ['BlogList-wrapper'],
                     ],
                     'nodes' => [
+                        // tableau de renu
                         '#theme' => 'cp_blog_post_blog_list',
                         '#nodes' => $nodes,
                     ],
                     'pager' => [
+                        // tableau de renu
                         '#type' => 'pager',
                     ],
                 ],
