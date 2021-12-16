@@ -1,0 +1,11 @@
+<article{{ attributes }}>
+  <div{{ content_attributes }}>
+    {{ content }}
+  </div>
+  {% if promoted_blog_posts is not empty %}
+    <div>
+      <h2>{{ 'A ne pas rater !'|t }}</h2>
+      {{ promoted_blog_posts }}
+    </div>
+  {% endif %}
+</article>

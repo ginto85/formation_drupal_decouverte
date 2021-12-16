@@ -36,22 +36,43 @@ class BlogController extends ControllerBase
             }
             $build = [
                 'wrapper' => [
-                    // tableau de renu
-                    '#type' => 'container', // ajoute une <div> avec l'attribut 'class= BlogList-wrapper
+                    '#type' => 'container',
                     '#attributes' => [
                         'class' => ['BlogList-wrapper'],
                     ],
                     'nodes' => [
-                        // tableau de renu
-                        '#theme' => 'cp_blog_post_blog_list',
-                        '#nodes' => $nodes,
+                        //            '#theme' => 'cp_blog_post_blog_list',
+                        //            '#nodes' => $nodes,
+                        '#theme' => 'item_list',
+                        '#list_type' => 'ul',
+                        '#title' => '',
+                        '#items' => $nodes,
+                        '#attributes' => ['class' => 'BlogList'],
                     ],
                     'pager' => [
-                        // tableau de renu
                         '#type' => 'pager',
                     ],
                 ],
             ];
+            // 1er TP
+            // $build = [
+            //     'wrapper' => [
+            //         // tableau de rendu
+            //         '#type' => 'container', // ajoute une <div> avec l'attribut 'class= BlogList-wrapper
+            //         '#attributes' => [
+            //             'class' => ['BlogList-wrapper'],
+            //         ],
+            //         'nodes' => [
+            //             // tableau de rendu
+            //             '#theme' => 'cp_blog_post_blog_list',
+            //             '#nodes' => $nodes,
+            //         ],
+            //         'pager' => [
+            //             // tableau de rendu
+            //             '#type' => 'pager',
+            //         ],
+            //     ],
+            // ];
         }
         return $build;
     }

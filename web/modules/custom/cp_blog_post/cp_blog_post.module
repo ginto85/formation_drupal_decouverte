@@ -1,50 +1,105 @@
-<?php 
-
-use Drupal\node\NodeInterface;
+<?php
 use Drupal\Core\Form\FormStateInterface;
-
-function cp_blog_post_preprocess_node(&$variables){
-
-    /** @var NodeInterface $node */
-    $node = $variables['node'];
-    // var_dump($node->bundle());
-
-    if($node->bundle() == 'blog_post' && $variables['view_mode'] =='full' ){
-    // $variables['content']['my_html']= [
-    //     '#markup' => "<p>Toto</p>"
-    // ];
-    $variables['toto'] = 'toto';
-    // dpm($variables);
+use Drupal\node\NodeInterface;
+function cp_blog_post_preprocess_node (&$variables) {
+  /** @var NodeInterface $node */
+  $node = $variables['node'];
+  
+  if ($node->bundle() == 'blog_post' && $variables['view_mode']  == "full") {
+    $fieldTagsValues = $node->get('field_tags')->getValue();
+    $tids = array_map(function($value){
+      return $value['target_id'];
+    },$fieldTagsValues);
+    $entityTypeManager = Drupal::entityTypeManager();
+    $nodeStorage = $entityTypeManager->getStorage('node');
+    $query = $nodeStorage->getQuery();
+    $query->condition('type', 'blog_post')
+      ->condition('status',TRUE)
+      ->condition('field_tags',$tids, 'IN')
+      ->condition('nid',$node->id(), '<>')
+      ->sort('changed', 'DESC')
+      ->range(0,3);
+    $nids = $query->execute();
+    if (!empty($nids)) {
+      $nodeObjects = $nodeStorage->loadMultiple($nids);
+      $nodeViewBuilder = $entityTypeManager->getViewBuilder('node');
+      $view_mode = 'teaser';
+      $variables['related_nodes'] = $nodeViewBuilder->viewMultiple($nodeObjects, $view_mode);
     }
-}
-function cp_blog_post_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id){
+  }
+  if ($node->bundle() == 'home' && $variables['view_mode']  == "full") {
+    $promotedBlogPost = [];
+    // votre code ici
+   
+    $fieldTagsValues = $node->get('field_promote')->getValue();
+    $tids = array_map(function($value){
+      return $value['target_id'];
+    },$fieldTagsValues);
+    $entityTypeManager = Drupal::entityTypeManager();
+    $nodeStorage = $entityTypeManager->getStorage('node');
+    $query = $nodeStorage->getQuery();
+    $query->condition('type', 'blog_post')
+      ->condition('status',TRUE)
+      ->condition('field_promote',TRUE)
+      ->sort('created', 'DESC')
+      ->range(0,3);
+     
+    $missingCount= 3 - count($nids);
+
+    if($missingCount >0){
+        $query = $nodeStorage->getQuery();
+    $query->condition('type', 'blog_post')
+      ->condition('status',TRUE)
+      ->condition('field_promote',FALSE)
+      ->sort('created', 'DESC')
+      ->range(0,$missingCount);
     
-    $form_object = $form_state->getFormObject();
-    $node = $form_object->getEntity();
-    // Make sure it's a node.
-    if ($node instanceof NodeInterface ){
-        $bundle = $node->bundle();
-    }
-    // dpm($node);
-    // dpm($bundle);
-    if($bundle == "blog_post"){
-        // dpm($form['status']['widget']['value']['#default_value']);
-        $form['status']['widget']['value']['#default_value']= FALSE;
-        // dpm($form['status']['widget']['value']['#default_value']);
-        // dpm($form['field_intro']['widget'][0]['value']['#disabled']);
-        $form['field_introduction']['widget'][0]['value']['#disabled'] =TRUE ;
-        // dpm($form['field_introduction']['widget'][0]['value']['#disabled']);
-    }
+      $nidsBonus = $query->execute();
+    $nids = array_merge($nids,$nidsBonus);
+
+  }
+    $nids = $query->execute();
+    if (!empty($nids)) {
+      $nodeObjects = $nodeStorage->loadMultiple($nids);
+    //  $nodeViewBuilder = $entityTypeManager->getViewBuilder('node');
+      $view_mode = 'teaser';
+
+    $variables['promoted_blog_posts'] = $promotedBlogPost;
+  }
 }
-function cp_blog_post_theme($existing, $type, $theme, $path) {
-    return [
-        // Name of the theme hook. This is used in the controller to trigger the hook.
-        'cp_blog_post_blog_list' => [
-          'render element' => 'children',
-          // Optionally define variables that will be passed to the Twig template and set default values for them.
-          'variables' => [
-              'nodes' => [],
-               ]
-        ],
-      ];
+}
+function cp_blog_post_preprocess_item_list (&$variables) {
+  if (Drupal::routeMatch()->getRouteName() == 'cp_blog_post.blog') {
+    foreach ($variables['items'] as $item) {
+      /** @var Drupal\Core\Template\Attribute $attributes */
+      $attributes = $item['attributes'];
+      $attributes->addClass('BlogList-item');
+    }
+  }
+}
+
+
+function cp_blog_post_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form_object = $form_state->getFormObject();
+  $node = $form_object->getEntity();
+  // Make sure it's a node.
+  if ($node instanceof NodeInterface) {
+    $bundle = $node->bundle();
+    if ($bundle == "blog_post") {
+      //$form['status']['widget']['value']['#default_value'] = FALSE;
+      //$form['field_intro']['widget'][0]['value']['#disabled'] = TRUE;
+    }
+  }
+}
+
+
+function cp_blog_post_theme($existing, $type, $theme, $path){
+  return [
+    'cp_blog_post_blog_list' => [
+      'render element' => 'children',
+      'variables' => [
+        'nodes' => [],
+      ],
+    ],
+  ];
 }
