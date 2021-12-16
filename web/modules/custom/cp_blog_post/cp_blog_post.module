@@ -1,14 +1,50 @@
 <?php 
 
+use Drupal\node\NodeInterface;
+use Drupal\Core\Form\FormStateInterface;
+
 function cp_blog_post_preprocess_node(&$variables){
 
-    /** @var \Drupal\node\NodeInterface $node */
+    /** @var NodeInterface $node */
     $node = $variables['node'];
     // var_dump($node->bundle());
 
     if($node->bundle() == 'blog_post' && $variables['view_mode'] =='full' ){
-    $variables['content']['my_html']= [
-        '#markup' => "<p>Toto</p>"
-    ];
+    // $variables['content']['my_html']= [
+    //     '#markup' => "<p>Toto</p>"
+    // ];
+    $variables['toto'] = 'toto';
+    // dpm($variables);
     }
+}
+function cp_blog_post_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id){
+    
+    $form_object = $form_state->getFormObject();
+    $node = $form_object->getEntity();
+    // Make sure it's a node.
+    if ($node instanceof NodeInterface ){
+        $bundle = $node->bundle();
+    }
+    // dpm($node);
+    // dpm($bundle);
+    if($bundle == "blog_post"){
+        // dpm($form['status']['widget']['value']['#default_value']);
+        $form['status']['widget']['value']['#default_value']= FALSE;
+        // dpm($form['status']['widget']['value']['#default_value']);
+        // dpm($form['field_intro']['widget'][0]['value']['#disabled']);
+        $form['field_introduction']['widget'][0]['value']['#disabled'] =TRUE ;
+        // dpm($form['field_introduction']['widget'][0]['value']['#disabled']);
+    }
+}
+function cp_blog_post_theme($existing, $type, $theme, $path) {
+    return [
+        // Name of the theme hook. This is used in the controller to trigger the hook.
+        'cp_blog_post_blog_list' => [
+          'render element' => 'children',
+          // Optionally define variables that will be passed to the Twig template and set default values for them.
+          'variables' => [
+              'nodes' => [],
+               ]
+        ],
+      ];
 }

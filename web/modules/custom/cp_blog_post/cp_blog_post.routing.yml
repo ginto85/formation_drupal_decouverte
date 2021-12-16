@@ -1,0 +1,7 @@
+cp_blog_post.blog:
+  path: '/blog' 
+  defaults: 
+    _controller: '\Drupal\cp_blog_post\Controller\BlogController::content' 
+    _title: 'bienvenue sur le blog de Caid-6'
+  requirements: 
+    _permission: 'access content' 
