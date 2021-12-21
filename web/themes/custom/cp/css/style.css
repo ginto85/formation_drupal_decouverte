@@ -3,10 +3,13 @@
     display:flex;
 }
 
-.MainMenu, ul{
+#block-cp-account-menu ul{
      list-style-type: none;
      background-color: rgb(47, 197, 47);
      border: solid 1px grey ;
+     width:30%;
+     display:flex;
+     justify-content: space-around;
 }
 
 .MainMenu li {
